@@ -1,0 +1,94 @@
+<div class="row">
+    <h1 class="text-center">Calculadora de resistencias</h1>
+    <div class="d-flex justify-content-evenly">
+      <div class="col-6">
+        <form class="form-group">
+          <label for="banda1">Banda 1</label>
+          <select class="form-control custom-select" id="banda1" name="banda1" [(ngModel)]="banda1">
+            <option value="0">Negro</option>
+            <option value="1">Cafe</option>
+            <option value="2">Rojo</option>
+            <option value="3">Naranja</option>
+            <option value="4">Amarillo</option>
+            <option value="5">Verde</option>
+            <option value="6">Azul</option>
+            <option value="7">Morado</option>
+            <option value="8">Gris</option>
+            <option value="9">Blanco</option>
+          </select>
+          <div class="form-group">
+            <label for="banda2">Banda 2</label>
+            <select class="form-control custom-select" id="banda2" name="banda1" [(ngModel)]="banda2">
+              <option value="0">Negro</option>
+              <option value="1">Cafe</option>
+              <option value="2">Rojo</option>
+              <option value="3">Naranja</option>
+              <option value="4">Amarillo</option>
+              <option value="5">Verde</option>
+              <option value="6">Azul</option>
+              <option value="7">Morado</option>
+              <option value="8">Gris</option>
+              <option value="9">Blanco</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="multiplicador">Multiplicador</label>
+            <select class="form-control custom-select" id="multiplicador" name="multiplicador" [(ngModel)]="multiplicador">
+              <option value="0">Negro</option>
+              <option value="1">Cafe</option>
+              <option value="2">Rojo</option>
+              <option value="3">Naranja</option>
+              <option value="4">Amarillo</option>
+              <option value="5">Verde</option>
+              <option value="6">Azul</option>
+              <option value="7">Morado</option>
+              <option value="8">Gris</option>
+              <option value="9">Blanco</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tolerancia">Tolerancia</label>
+            <select class="form-control custom-select" id="tolerancia" name="tolerancia" [(ngModel)]="tolerancia">
+              <option value="1">Dorado</option>
+              <option value="2">Plateado</option>
+            </select>
+          </div>
+          <br>
+          <div class="mb-3">
+            <button class="btn btn-primary" (click)="calcularResistencia()">Calcular</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="table-responsive">
+        <table class="table table-striped-columns">
+          <thead>
+            <tr>
+              <th>Banda 1</th>
+              <th>Banda 2</th>
+              <th>Multiplicador</th>
+              <th>Tolerancia</th>
+              <th>Valor</th>
+              <th>Minimo</th>
+              <th>Maximo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="banda banda1" [style.background-color]="setColor(banda1)"></td>
+              <td class="banda banda2" [style.background-color]="setColor(banda2)"></td>
+              <td class="banda multiplicador" [style.background-color]="setColor(multiplicador)"></td>
+              <td class="banda tolerancia" [style.background-color]="setTolerancia(tolerancia)"></td>
+              <td>{{ res?.tot }}</td>
+              <td>{{ res?.min }}</td>
+              <td>{{ res?.max }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <br>
+  

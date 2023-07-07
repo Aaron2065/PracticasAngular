@@ -1,0 +1,73 @@
+<h1>Cinepolis</h1>
+<div class="row" style="font-size: larger;">
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12">
+                <h2>Entradas</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form (ngSubmit)="onSubmit()" [formGroup]="cineForm">
+                    <div class="row inp">
+                        <div class="col-5">
+                            <label for="">Nombre: </label>
+                        </div>
+                        <div class="col-7">
+                            <input type="text" id="nombre" name="nombre" required formControlName="nombre">
+                        </div>
+                    </div>
+
+                    <div class="row inp">
+                        <div class="col-5">
+                            <label for="">Cantidad de compradores: </label>
+                        </div>
+                        <div class="col-7">
+                            <input type="number" id="cantidadCompradores" required
+                                formControlName="cantidadCompradores">
+                        </div>
+                    </div>
+
+                    <div class="row inp">
+                        <div class="col-5">
+                            <label for="">Tarjeta: </label>
+                        </div>
+                        <div class="col-7">
+                            <input type="radio" id="tajeta" name="tarjeta" formControlName="tarjeta" value="si"> Si
+                            <input type="radio" id="tajeta" name="tarjeta" formControlName="tarjeta" value="no"> No
+                        </div>
+                    </div>
+
+                    <div class="row inp">
+                        <div class="col-5">
+                            <label for="">Cantidad de boletos: </label>
+                        </div>
+                        <div class="col-7">
+                            <input type="number" id="cantidadBoletos" required formControlName="cantidadBoletos">
+                        </div>
+                    </div>
+                    <br>
+                    <div style="text-align: center;">
+                        <button class="btn btn-success" (click)="agregarTotal();">Procesar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="row">
+            <div class="col-12">
+                <h2>Salidas</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <label for="">Valor a pagar: </label>
+            </div>
+            <div class="col-7">
+                <p>$ {{ totalFinalFinal }}</p>
+            </div>
+        </div>
+    </div>
+</div>

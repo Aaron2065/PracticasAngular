@@ -1,0 +1,113 @@
+<h1>Registro de Pizzas</h1>
+<div class="row" style="font-size: medium;">
+    <div class="col-12">
+        <form (ngSubmit)="onSubmit()" [formGroup]="pizzaForm">
+            <div class="row">
+                <div class="col-4">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required formControlName="nombre" class="form-control">
+                </div>
+                <div class="col-4">
+                    <label for="direccion" class="form-label">Direccion</label>
+                    <input type="text" id="direccion" name="direccion" class="form-control">
+                </div>
+                <div class="col-4">
+                    <label for="telefono" class="form-label">Telefono</label>
+                    <input type="text" id="telefono" name="telefono" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-4">
+                    <label for="tamanio" class="form-label">Tamaño</label>
+                    <br>
+                    <input id="tamanio" name="tamanio" required formControlName="tamanio" type="radio" value="Chica" />
+                    Chica
+                    <br />
+                    <input id="tamanio" name="tamanio" required formControlName="tamanio" type="radio"
+                        value="Mediana" /> Mediana
+                    <br />
+                    <input id="tamanio" name="tamanio" required formControlName="tamanio" type="radio" value="Grande" />
+                    Grande
+                </div>
+                <div class="col-4">
+                    <label for="ingredientes" class="form-label">Ingredientes</label>
+                    <br />
+                    <input id="ingrediente" formControlName="Jamon" name="Jamon" type="checkbox" value="Jamon" />
+                    Jamón $10
+                    <br />
+                    <input id="ingrediente" formControlName="Pina" name="Pina" type="checkbox" value="Pina" />
+                    Piña $10
+                    <br />
+                    <input id="ingrediente" formControlName="Champinones" name="Champinones" type="checkbox"
+                        value="Champinones" /> Champiñones $10
+                </div>
+
+                <div class="col-4">
+                    <label for="num" class="form-label">Numero de pizzas</label>
+                    <input type="text" id="num" name="num" required formControlName="num" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn btn-success btn-lg" style="width: 100%;" type="submit">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<hr>
+<div class="row" style="font-size: medium;">
+    <div class="row">
+        <div class="col-6">
+            <div class="col-12">
+                <table style="border: 1px double black; width: 100%; text-align: center;">
+                    <tr style="border: 1px double black;">
+                        <th>Tamaño</th>
+                        <th style="border: 1px double black;">Ingredientes</th>
+                        <th>No. Pizzas</th>
+                        <th style="border: 1px double black;">Subtotal</th>
+                    </tr>
+                    <tr *ngFor="let pizza of registrosPizzas; let i = index">
+                        <td>{{ pizza.tamanio }}</td>
+                        <td>{{ pizza.ingredientes }}</td>
+                        <td>{{ pizza.num }}</td>
+                        <td>$ {{ pizza.subtotal }}</td>
+                    </tr>
+                </table>
+                <br>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-danger btn-lg" style="margin-left: 170px;"
+                    (click)="eliminarUltimoRegistro()">Quitar</button>
+                <button class="btn btn-success btn-lg" style="margin-left: 100px;"
+                    (click)="agregarSubtotal()">Terminar</button>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="col-12" style="background-color: lightgrey; border-radius: 15px;">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 style="margin: 10px; font-weight: bold;">Vista del dia</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <table style="width: 100%; text-align: center; font-size: 22px;">
+                            <tr *ngFor="let venta of subtotalVentasTerminadas">
+                                <td>{{ venta.nombre }} - Total: ${{ venta.subtotal }}</td>
+                            </tr>
+                        </table>
+                        <br>
+                        <p style="text-align: center; font-size: 22px;"><strong>Total de ventas: ${{ totalVentas
+                                }}</strong></p>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
